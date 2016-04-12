@@ -36,7 +36,7 @@ class Photo(models.Model):
 
 class Album(models.Model):
     """A model that houses and points to many photos"""
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, default=None, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
     photo_set = models.ManyToManyField(Photo, related_name="photos_of")
     title = models.CharField(max_length=255, default=None)
     description = models.TextField(blank=True)

@@ -56,7 +56,7 @@ ROOT_URLCONF = 'imageshare.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'imageshare', 'templates', 'imageshare')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

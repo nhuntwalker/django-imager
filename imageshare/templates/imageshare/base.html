@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            {% block title %}{% endblock %}
+        </title>
+        <link href="{% static "style.css" %}" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <main id="content" class="container">
+            <div class="col-8">
+                {% block content %}{% endblock %}
+            </div>
+            <div id="sidebar" class="col-4">
+                <h2>Some sidebar</h2>
+            </div>
+        </main>
+    </body>
+</html>

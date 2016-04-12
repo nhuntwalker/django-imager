@@ -21,7 +21,7 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.home_view, name="homepage"),
+    url(r'^$', views.ClassView.as_view(), name="homepage"),
     url(r'^admin/', admin.site.urls),
     url(r'^profile/', include('imager_profile.urls'))
 ]
@@ -29,3 +29,5 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL,
+                          document_root=settings.STATIC_ROOT)
