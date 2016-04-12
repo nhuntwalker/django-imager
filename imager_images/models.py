@@ -21,8 +21,10 @@ PUBLISH_OPTIONS = [("private", "Private"),
 
 
 class Photo(models.Model):
+    """The data model for an individual photo"""
     file = models.ImageField(upload_to='user_photos')
-    owner = models.OneToOneField(User, related_name="photo", null=False, default=None)
+    owner = models.OneToOneField(
+        User, related_name="photo", null=False, default=None, on_delete=models.CASCADE)
     title = models.CharField(max_length=255, default=None)
     description = models.TextField(blank=True)
     date_uploaded = models.DateTimeField(default=timezone.now)
@@ -34,13 +36,12 @@ class Photo(models.Model):
 
 class Album(models.Model):
     """A model that houses and points to many photos"""
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, default=None, on_delete=models.CASCADE)
     photo_set = models.ManyToManyField(Photo, related_name="photos_of")
     title = models.CharField(max_length=255, default=None)
     description = models.TextField(blank=True)
     date_created = models.DateTimeField(default=timezone.now)
     date_modified = models.DateTimeField(auto_now=True)
     date_published = models.DateTimeField(auto_now_add=True)
-    published = models.CharField(max_length=7, choices=PUBLISH_OPTIONS, default="public")
-
-
+    published = models.CharField(
+        max_length=7, choices=PUBLISH_OPTIONS, default="public")

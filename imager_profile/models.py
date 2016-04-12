@@ -14,6 +14,7 @@ class ActiveUserManager(models.Manager):
 
 
 class ImagerProfile(models.Model):
+    """Model for the profile of a given user."""
     user = models.OneToOneField(
         User,
         related_name="profile",
