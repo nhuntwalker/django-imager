@@ -13,7 +13,7 @@ class PublishedManager(models.Manager):
 
     def get_queryset(self):
         return super(PublishedManager,
-                     self).get_queryset().filter(status='published')
+                     self).get_queryset().filter(published='public')
 
 PUBLISH_OPTIONS = [("private", "Private"),
                    ("shared", "Shared"),
@@ -23,7 +23,7 @@ PUBLISH_OPTIONS = [("private", "Private"),
 class Photo(models.Model):
     """The data model for an individual photo"""
     file = models.ImageField(upload_to='user_photos')
-    owner = models.OneToOneField(
+    owner = models.ForeignKey(
         User, related_name="photo", null=False, default=None, on_delete=models.CASCADE)
     title = models.CharField(max_length=255, default=None)
     description = models.TextField(blank=True)

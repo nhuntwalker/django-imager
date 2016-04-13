@@ -1,8 +1,28 @@
 {% extends "base.html" %}
 {% block title %}NMHW ImageShare{% endblock %}
 {% block content %}
-<h1>Image Share</h1>
-<p>Prepare for some goddamn images!</p>
-<p>{{this_thing}}</p>
+<div id="background"> 
+    <img src="{{img.file.url}}" />
+</div>
+<div class="row head-row">
+    <h1 id="site-head">Image Share</h1>
+    <h2 id="tagline">Come, share your images with your friends!</h2>
+</div>
+<div class="row gateway-row">
+    <div class="container">
+        <div class="col-md-1"></div>
+        <div class="col-md-4 site-gateway registration-box">
+            <h3>Come Join the Network!</h3>
+            <a href="{% url 'register' %}" class="action-button"><div class="register-button">Register Here</div></a>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-4 site-gateway login-box">
+            <h3>Already Have an Account?</h3>
+            <a href="{% url 'login' %}" class="action-button"><div class="login-button">Login Here</div></a>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+
 
 {% endblock %}

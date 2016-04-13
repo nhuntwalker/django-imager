@@ -69,6 +69,8 @@ TEMPLATES = [
     },
 ]
 
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'imageshare', "static", 'imageshare'),) 
+
 WSGI_APPLICATION = 'imageshare.wsgi.application'
 
 
@@ -125,3 +127,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static') # for when you want static files 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+LOGIN_REDIRECT_URL = '/'

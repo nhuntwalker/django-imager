@@ -16,14 +16,47 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls import url, include
 from django.conf.urls.static import static
+
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
+
+from django.views.generic import TemplateView
+
+from registration.backends.simple.views import RegistrationView
 
 from . import views
 
+
 urlpatterns = [
-    url(r'^$', views.ClassView.as_view(), name="homepage"),
-    url(r'^admin/', admin.site.urls),
-    url(r'^profile/', include('imager_profile.urls'))
+    url(r'^$',
+        views.IndexView.as_view(),
+        name="homepage"),
+
+    url(r'^login/$',
+        auth_views.login,
+        {'template_name': 'login.html'},
+        name="login"),
+
+    url(r'^logout/$',
+        auth_views.logout,
+        {'template_name': 'logout.html'},
+        name="logout"),
+
+    url(r'^register/$',
+        views.MyRegistration.as_view(), 
+        name='register'),
+
+    url(r'^register/closed/$',
+        TemplateView.as_view(
+            template_name='registration_closed.html'
+        ),
+        name='registration_disallowed'),
+
+    url(r'^admin/',
+        admin.site.urls),
+
+    url(r'^profile/',
+        include('imager_profile.urls'))
 ]
 
 if settings.DEBUG:
