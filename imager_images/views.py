@@ -1,3 +1,6 @@
-from django.shortcuts import render
+from imager_images.models import Photo
+from django.views.generic.detail import DetailView
 
-# Create your views here.
+class PhotoDetailView(DetailView):
+    model = Photo
+    template_name = "imager_images/photo_detail.html"
