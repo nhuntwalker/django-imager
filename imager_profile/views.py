@@ -7,8 +7,9 @@ from django.utils.decorators import method_decorator
 class ProfileView(TemplateView):
     template_name = "imager_profile/dashboard.html"
 
-    def get_context_data(self):
-        return {""}
+    def get_context_data(self, **kwargs):
+        context = super(ProfileView, self).get_context_data(**kwargs)
+        return context
 
 # def profile_view(request, *args, **kwargs):
 #     context = {"args": args, "kwargs": kwargs}
