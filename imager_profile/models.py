@@ -4,7 +4,6 @@ from django.conf import settings
 
 # Create your models here.
 
-
 class ActiveUserManager(models.Manager):
     """Convenience manager which returns only active profiles"""
 
@@ -28,12 +27,12 @@ class ImagerProfile(models.Model):
     friends = models.ManyToManyField(User,
                                      related_name='friend_of')
 
-    objects = ActiveUserManager()
+    objects = models.Manager()
+    active = ActiveUserManager()
 
     def __str__(self):
         """Return string output of username."""
         return self.user.get_full_name() or self.user.username
-        # return ''
 
     @property
     def is_active(self):
@@ -59,3 +58,13 @@ US_REGIONS = [
 ('ak', 'Alaska'),
 ('hi', 'Hawaii'),
 ]
+
+# ------------ Receivers ---------
+from django.db.models.signals import post_save, post_delete
+from django.dispatch import receiver
+
+@receiver(post_save, sender=User)
+def ensure_profile_exists_on_user_save(sender, **kwargs):
+    if kwargs.get("created", False):
+        ImagerProfile.objects.get_or_create(user=kwargs.get("instance"))
+
