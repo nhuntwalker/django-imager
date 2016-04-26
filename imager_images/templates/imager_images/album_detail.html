@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}View Photo{% endblock %}
+{% block content %}
+
+{{album.title}}<br/>
+{{album.date_published}} | {{album.owner}}<br/>
+{{album.description}}<br/>
+
+{% for photo in album.photo_set %}
+
+{{photo.title}}
+
+{% endfor %}
+
+{% endblock %}

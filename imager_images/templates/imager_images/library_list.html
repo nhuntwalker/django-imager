@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% block title %}{{user.username}}'s Library{% endblock %}
+{% block content %}
+
+<h2 class="library-head">Your Photos</h2>
+{% for photo in object_list %}
+    <div class="library-photo-container library-thumb-list">
+        <div>
+            <a href="#">
+                <img src="{{ photo.file.url }}" class="library-thumb" />
+            </a>
+            <br/>
+        </div>
+        <div>
+            <span>{{ photo.title }}</span>
+        </div>
+    </div>
+{% empty %}
+    <div class="library-thumb-list">
+        No photos yet.
+    </div>
+{% endfor %}
+
+<h2 class="library-head">Your Albums</h2>
+{% for album in album_list %}
+    <img src="../{{default_cover}}" width="400"/>
+{% empty %}
+    You don't have any albums yet!
+{% endfor %}
+
+{% endblock %}

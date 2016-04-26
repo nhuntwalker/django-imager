@@ -90,3 +90,17 @@ body {
     background-color: darkblue;
     color: white;
 }
+
+.library-thumb {
+    width: 200px;
+}
+
+.library-thumb-list {
+    float: left;
+    margin: 5px;
+    list-style-type: none;    
+}
+
+.library-head {
+    clear: both;
+}

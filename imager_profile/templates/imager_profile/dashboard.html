@@ -1,6 +1,17 @@
+{% extends "base.html" %}
+{% block title %}NMHW ImageShare{% endblock %}
+{% block content %}
 {% if form.errors %}
 <p>Your username and password didn't match. Please try again.</p>
 {% endif %}
 
-{{args}}
-{{kwargs}}
+<ul>
+    <li><strong>Username:</strong> {{user.username}}</li>
+    <li><strong>Location:</strong> {{user.profile.location}}</li>
+    <li><strong>Camera Model:</strong> {{user.profile.camera_model}}</li>
+    <li><strong>Photography Type:</strong> {{user.profile.photography_type}}</li>
+    <li><strong>Photos:</strong> {{user.photo.count}}</li>
+    <li><strong>Albums:</strong> {{user.album_set.count}}</li>
+</ul>
+
+{% endblock %}

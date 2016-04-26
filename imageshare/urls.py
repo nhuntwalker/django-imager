@@ -56,7 +56,10 @@ urlpatterns = [
         admin.site.urls),
 
     url(r'^profile/',
-        include('imager_profile.urls'))
+        include('imager_profile.urls')),
+
+    url(r'^images/',
+        include('imager_images.urls'))
 ]
 
 if settings.DEBUG:
