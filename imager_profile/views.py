@@ -1,17 +1,18 @@
-from django.views.generic import TemplateView
+from django.views.generic import DetailView
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
+
+from .models import ImagerProfile
 
 # Create your views here.
-class ProfileView(TemplateView):
+
+class ProfileView(DetailView):
     template_name = "imager_profile/dashboard.html"
+    model = ImagerProfile
 
-    def get_context_data(self, **kwargs):
+    def get_object(self):
+        return self.request.user
+
+    def get_context_object(self, **kwargs):
         context = super(ProfileView, self).get_context_data(**kwargs)
+        context["n_photos"] = len(self.request.user.photo.all())
         return context
-
-# def profile_view(request, *args, **kwargs):
-#     context = {"args": args, "kwargs": kwargs}
-#     the_template = "imager_profile/dashboard.html"
-#     return render(request, the_template, context=context)

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}View Photo{% endblock %}
+{% block content %}
+
+<div>
+    <img src="{{ photo.file.url }}" class="" width="500"/><br/>
+</div>
+{{photo.title}}<br/>
+{{photo.date_published}}<br/>
+{{photo.description}}<br/>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}View Photo{% endblock %}
+{% block content %}
+
+<span class="album-title">{{album.title}}</span><br/>
+<span class="album-label">Album Published:</span> <span class="album-data">{{album.date_published}}</span> | <span class="album-label">Owner:</span> <span class="album-data">{{album.owner}}</span><br/>
+<span class="album-label">Description:</span> <span class="album-data">{{album.description}}</span><br/>
+
+{% for photo in album.photo_set.all %}
+    <div class="album-photo-container album-thumb-list">
+        <div>
+            <a href="/images/photos/{{ photo.pk }}">
+                <img src="{{ photo.file.url }}" class="album-thumb" />
+            </a>
+            <br/>
+        </div>
+        <div>
+            <span class="album-photo-label">Title</span>: {{photo.title}}<br/>
+            <span class="album-photo-label">Published</span>: {{photo.date_published}}<br/>
+            <span class="album-photo-label">Last Modified</span>: {{photo.date_modified}}<br/>
+        </div>
+    </div>
+{% empty %}
+    <div class="album-thumb-list">
+        No photos yet.
+    </div>
+{% endfor %}
+
+
+{% endblock %}

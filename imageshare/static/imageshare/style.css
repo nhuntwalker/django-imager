@@ -90,3 +90,34 @@ body {
     background-color: darkblue;
     color: white;
 }
+
+.library-thumb,
+.album-thumb {
+    width: 200px;
+}
+
+.library-thumb-list,
+.album-thumb-list {
+    float: left;
+    margin: 5px;
+    list-style-type: none;    
+}
+
+.library-head,
+.album-head {
+    clear: both;
+}
+
+.album-label,
+.album-photo-label,
+.album-title {
+    font-weight: 600;
+}
+
+.album-title {
+    font-size: 2em;
+}
+.album-label,
+.album-data {
+    font-size: 1.5em;
+}
