@@ -95,10 +95,27 @@ body {
     width: 200px;
 }
 
-.library-thumb-list {
+/*.library-thumb-list {
     float: left;
     margin: 5px;
-    list-style-type: none;    
+    list-style-type: none;
+}*/
+.new-photo-btn {
+    background-color: rgb(0, 170, 0);
+    height: 150px;
+    width: 200px;
+    text-align: center;
+}
+.new-photo-btn:hover {
+    background-color: rgb(0, 150, 0);
+}
+.new-photo-btn div {
+    margin-top: 30%;
+    color: white;
+    font-weight: 600;
+}
+.new-photo-btn a {
+    text-decoration: none;
 }
 
 .library-head {

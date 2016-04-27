@@ -8,7 +8,7 @@
     <div class="library-photo-container library-thumb-list">
         <div>
             <a href="/images/photos/{{ photo.pk }}">
-                <img src="{{ photo.file.url }}" class="library-thumb" />
+                <img src="{{ photo.image.url }}" class="library-thumb" />
             </a>
             <br/>
         </div>
@@ -21,6 +21,9 @@
         No photos yet.
     </div>
 {% endfor %}
+    <div class="library-photo-container library-thumb-list new-photo-btn">
+        <a href="{% url 'images:create_single_photo' %}"><div> Add a New Photo </div></a>
+    </div>
 
 <h2 class="library-head">Your Albums</h2>
 {% for album in album_list %}
