@@ -91,33 +91,39 @@ body {
     color: white;
 }
 
-.library-thumb,
-.album-thumb {
+.library-thumb {
     width: 200px;
 }
 
-.library-thumb-list,
-.album-thumb-list {
+.library-thumb-list {
     float: left;
     margin: 5px;
-    list-style-type: none;    
+    list-style-type: none;
 }
-
-.library-head,
-.album-head {
-    clear: both;
-}
-
-.album-label,
-.album-photo-label,
-.album-title {
+.new-photo-btn,
+.new-album-btn {
+    background-color: rgb(0, 170, 0);
+    text-align: center;
+    margin-top: 25px;
+    margin-left: 10px;
+    color: white;
     font-weight: 600;
+    text-decoration: none;
+}
+.new-photo-btn:hover,
+.new-album-btn:hover {
+    background-color: rgb(0, 150, 0);
+    cursor: pointer;
+}
+.new-photo-btn-link,
+.new-album-btn {
+    float: left;
 }
 
-.album-title {
-    font-size: 2em;
+.library-head {
+    clear: both;
+    overflow: hidden;
 }
-.album-label,
-.album-data {
-    font-size: 1.5em;
+.library-head h2 {
+    float: left;
 }

@@ -1,10 +1,14 @@
-from django.conf.urls import url 
+from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
 
-from . import views
+from .views import (ProfileView, edit_profile)
 
 
 app_name = "profile"
 urlpatterns = [
-    url(r'^', login_required(views.ProfileView.as_view(), login_url="/login/"), name="dashboard")
+    url(r'^$',
+        login_required(ProfileView.as_view(), login_url="/login/"),
+        name="dashboard"),
+
+    url(r'^edit/$', edit_profile, name='edit_profile')
 ]

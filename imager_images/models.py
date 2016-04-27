@@ -22,7 +22,7 @@ PUBLISH_OPTIONS = [("private", "Private"),
 
 class Photo(models.Model):
     """The data model for an individual photo"""
-    file = models.ImageField(upload_to='user_photos')
+    image = models.ImageField(upload_to='user_photos', blank=True, null=True)
     owner = models.ForeignKey(
         User, related_name="photo", null=False, default=None, on_delete=models.CASCADE)
     title = models.CharField(max_length=255, default=None)

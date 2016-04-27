@@ -3,17 +3,23 @@
 {% block title %}{{user.username}}'s Library{% endblock %}
 {% block content %}
 
-<h2 class="library-head">Your Photos</h2>
+<div class="library-head">
+    <h2>Your Photos </h2>
+    <a class="new-photo-btn-link" href="{% url 'images:create_single_photo' %}">
+        <button class="new-photo-btn"> Add a New Photo </button>
+    </a>
+</div>
+
 {% for photo in object_list %}
     <div class="library-photo-container library-thumb-list">
         <div>
             <a href="/images/photos/{{ photo.pk }}">
-                <img src="{{ photo.file.url }}" class="library-thumb" />
+                <img src="{{ photo.image.url }}" class="library-thumb" />
             </a>
             <br/>
         </div>
         <div>
-            <span>{{ photo.title }}</span>
+            <span>{{ photo.title }}</span> | <span><a href='{% url "images:edit_single_photo" photo.pk %}'>Edit Photo</a></span>
         </div>
     </div>
 {% empty %}
@@ -22,11 +28,17 @@
     </div>
 {% endfor %}
 
-<h2 class="library-head">Your Albums</h2>
+<div class="library-head">
+    <h2>Your Albums</h2>
+    <a class="new-album-btn-link" href="{% url 'images:create_single_album' %}">
+        <button class="new-album-btn"> Add a New Album </button>
+    </a>
+</div>
 {% for album in album_list %}
     <a href="/images/albums/{{ album.pk }}">
         <img src="../{{default_cover}}" width="400"/>
     </a>
+        <span><a href='{% url "images:edit_single_album" album.pk %}'>Edit Album</a></span>
 {% empty %}
     You don't have any albums yet!
 {% endfor %}
