@@ -12,12 +12,17 @@
     <body>
             <div id="user-headbox">
                 <ul>
-                    <li><a href="{% url 'homepage' %}">home</a></li>
+                    {% if user.is_anonymous %}
+                        <li><a href="{% url 'homepage' %}">home</a></li>
+                    {% else %}
+                        <li><a href="{% url 'profile:dashboard' %}">home</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'images:library' %}">library</a></li>
                     <li>
                     {% if user.is_anonymous %}
-                    <a href="{% url 'django.contrib.auth.views.login' %}">login</a>
+                        <a href="{% url 'django.contrib.auth.views.login' %}">login</a>
                     {% else %}
-                    You are logged in as {{ user }} <a href="{% url 'django.contrib.auth.views.logout' %}">logout</a>
+                        You are logged in as {{ user }} <a href="{% url 'django.contrib.auth.views.logout' %}">logout</a>
                     {% endif %}
                     </li>
                 </ul>
